@@ -32,6 +32,7 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Student std) // async use korsi tai Task<T> evabe use korte hobe
         {
             if (ModelState.IsValid)
@@ -66,6 +67,7 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
             return View(student);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, Student std)
         {
             if (id != std.Id)
@@ -97,6 +99,7 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
             return View(student);
         }
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             var student = await studentDBContext.Students.FindAsync(id);

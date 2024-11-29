@@ -38,6 +38,7 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
             {
                 await studentDBContext.Students.AddAsync(std);
                 await studentDBContext.SaveChangesAsync();
+                TempData["create-success"] = "Student created successfully!";
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -75,6 +76,8 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
             {
                 studentDBContext.Students.Update(std);
                 await studentDBContext.SaveChangesAsync();
+                TempData["update-success"] = "Student updated successfully!";
+
                 return RedirectToAction("Index", "Home");
             }
             return View(std);
@@ -102,6 +105,7 @@ namespace CodeFirstASP_Youtube_Programentor_.Controllers
                 studentDBContext.Students.Remove(student);
             }
             await studentDBContext.SaveChangesAsync();
+            TempData["delete-success"] = "Student deleted successfully!";
             return RedirectToAction("Index", "Home");
         }
         public IActionResult Privacy()
